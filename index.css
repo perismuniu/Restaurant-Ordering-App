@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Smythe", system-ui;
+    display: flex;
+    justify-content: center;
+} 
+
+header {
+   width: 600px;
+   height: 167px;
+}
+
+.menu {
+    display: flex;
+    margin-left: 20px;   
+}
+
+.emoji {
+    width: 70px;
+    height: 89px;
+    margin-top: 40px;
+    
+}
+.additional-menu-details{
+    margin-left: 40px;
+}
+.name {
+    font-size: 28px;
+}
+
+.ingredients {
+    font-size: 16px;
+    color: gray;
+    width: 200px;
+}
+
+.price {
+    font-size: 20px;
+}
+
+.menu-button {
+    margin-left: 200px;
+    margin-top: 50px;
+    border-radius: 100px;
+    opacity: 100%;
+    border: 1px solid #DEDEDE;
+    width: 50px;
+    height: 48px;
+    font-size: 32px;
+    color: #3C3C3C;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.order-details {
+    max-width: 600px;
+}
+
+.order {
+    display:flex;
+    justify-content: center;
+}
+
+.name-price, .total {
+    display: flex;
+    font-size: 28px;
+    margin-left: 30px;
+    margin-right: 0px;
+}
+
+.order-price {
+    margin-left: 480px;
+
+}
+
+.complete-button {
+    color: whitesmoke;
+    font-weight: bold;
+    background-color:  #16DB99;
+    border: none;
+    width: 600px;
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
