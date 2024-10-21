@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
     <title>Restaurant Ordering App</title>
 </head>
+
 <body>
-    <main >
         <header>
             <img src="/images/header.png" alt="Image with burger" />
-        </header>        
-        <section class="container" id="container"></section>
-        <section class="order-summary" id="order-summary"></section>
+        </header>    
+
+        <main>    
+            <section class="container" id="container"></section>
+            
+            <section class="order-summary" id="order-summary">
+                <div class="order" id="order"></div>
+            </section>
+            <div class="total-price" id="total-price"></div>
+            <div id="form-container" name="form-container"></div>
+        </main>
+
         <script src="index.js" type="module"></script>
-    </main> 
 </body>
 </html>
-
-
-
