@@ -21,7 +21,11 @@ header, main {
 
 .menu {
     display: flex;
-    margin-left: 20px;   
+    justify-content: space-between;   
+}
+
+.image-menu {
+    display: flex;
 }
 
 .emoji {
@@ -74,7 +78,7 @@ header, main {
 .name-price, .total {
     display: flex;
     font-size: 28px;
-    margin-left: 30px;
+    justify-content: space-between;
 }
 
 .remove-button{
@@ -84,14 +88,18 @@ header, main {
     color: #BBBBBB;
 }
 
-.order-price {
-    margin-left: 420px;
-
+.name-remove{
+    display: flex;
 }
 
-.total {
-    margin-right: 500px;
+p span {
+    margin-left: 420px;
+}
 
+.hr-bold {
+  height: 2px;  
+  background-color: black;
+  border: none;
 }
 
 .complete-button {
@@ -139,4 +147,17 @@ header, main {
     font-size: 20px;
     margin: 10px 0px;
     cursor: pointer;
+}
+
+.confirmation-message {
+    color: #065F46;
+    background-color: #ECFDF5;
+    width: 504px;
+    height: 120px;
+    margin-top: 20px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 auto;
+
 }

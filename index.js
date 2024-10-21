@@ -13,13 +13,15 @@ function getMenuHtml() {
         return `
             <section >
                 <div class="menu">
-                    <div>
-                        <img class="emoji" alt="${name}" src="/images/${emoji}">
-                    </div>
-                    <div class="additional-menu-details">
-                        <h1 class="name" data-name=${id}>${name}</h1>
-                        <p class="ingredients">${menuIngredients}</p>
-                        <h2 class="price" data-price=${id}>$${price}</h2>
+                    <div class="image-menu">
+                        <div>
+                            <img class="emoji" alt="${name}" src="/images/${emoji}">
+                        </div>
+                        <div class="additional-menu-details">
+                            <h1 class="name" data-name=${id}>${name}</h1>
+                            <p class="ingredients">${menuIngredients}</p>
+                            <h2 class="price" data-price=${id}>$${price}</h2>
+                        </div>
                     </div>
                     <div>
                         <button class="menu-button" data-id="${id}">+</button>
@@ -65,14 +67,16 @@ function handleClickOrderHtml (menuId) {
 
         document.getElementById('order-summary').innerHTML += `
                 <div class="name-price" id="order-item-${id}">
-                    <p>${name}</p>
-                    <button class="remove-button" data-id="${id}">remove</button>
+                    <div class="name-remove">
+                        <p>${name}</p>
+                        <button class="remove-button" data-id="${id}">remove</button>
+                    </div>
                     <p class="order-price">$${price}</p>
                 </div>
             </div>`
 
         document.getElementById('total-price').innerHTML = `
-            <hr/>
+            <hr class="hr-bold"/>
             <p class="total">Total Price: <span class="total-price"> $${totalPrice} </span></p>
             <button id="complete-button" type="submit" class="complete-button" >Complete Order</button>
             `
@@ -143,7 +147,10 @@ function handleClickPayHtml () {
 
     console.log('Order processed:', order)
 
-    form.innerHTML = `<p>Thanks, ${name}! Your order is on the way! </p>`
+    form.innerHTML = `
+            <div class="confirmation-message" >
+              <p>Thanks, ${name}! Your order is on the way! </p>
+            </div`
 
     // Reset order summary and total price
     document.getElementById('order-summary').innerHTML = ''
