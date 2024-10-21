@@ -107,7 +107,6 @@ function handleRemoverOrderHtml(menuId) {
             <p class="total">Total Price: <span class="total-price"> $${totalPrice} </span></p>
             <button id="complete-button" class="complete-button" type="submit">Complete Order</button>
          `
-
     }
 }
 
