@@ -116,12 +116,14 @@ function showForm () {
 
     formContainer.innerHTML = `
         <form class="payment-form">
-            <h1 class="">Enter card details</h1>
             <div class="payment-details">
-                <input class="input-field" type="text" id="name" name="name" placeholder="Enter your name" required/>
-                <input class="input-field" type="number" id="cardnumber" name="cardnumber" placeholder="Enter card number" required/>
-                <input class="input-field" type="number" id="cvv" name="cvv" placeholder="Enter CVV" required/>
-                <button id="pay" type="button" class="pay">Pay</button>
+                <h1 class="payment-title">Enter card details</h1>
+                <div class="payment-details">
+                    <input class="input-field" type="text" id="name" name="name" placeholder="Enter your name" required/>
+                    <input class="input-field" type="number" id="cardnumber" name="cardnumber" placeholder="Enter card number" required/>
+                    <input class="input-field" type="number" id="cvv" name="cvv" placeholder="Enter CVV" required/>
+                    <button id="pay" type="button" class="pay">Pay</button>
+            </div>
             </div>
         </form>`
 }
