@@ -1,15 +1,21 @@
 import { menuArray } from './data.js'
 
+// Array to store items added to the order
 let orderItems = []
+
+// Flag to check if the payment form is displayed
 let isFormDisplayed = false
 
+// Function to generate HTML for the menu based on menuArray
 function getMenuHtml() {
-    
     return menuArray.map((menuItems) => {  
 
         const { name, ingredients, price, emoji, id } = menuItems
 
+        // Join the ingredients array into a string
         const menuIngredients = ingredients.reduce((total, current) => total + ', ' + current)
+
+        // Return HTML for each menu item
         return `
             <section >
                 <div class="menu">
@@ -33,25 +39,36 @@ function getMenuHtml() {
 
 }
 
+// Event listener for click events on the document
 document.addEventListener('click', function(e) {
+
+    // Check if menu button is clicked and handle adding the menu item to order
     if(e.target.classList.contains('menu-button')) {
         handleClickOrderHtml(e.target.dataset.id)
-    } else if(e.target.classList.contains('remove-button')) {
+    } 
+    
+    // Check if remove button is clicked and handle removing the menu item from order
+    else if(e.target.classList.contains('remove-button')) {
         handleRemoverOrderHtml(e.target.dataset.id)
-    } else if (e.target && e.target.id === ('complete-button')) {
+    } 
+    
+    // Check if complete order button is clicked, Show payment form and Set flag to true
+    else if (e.target && e.target.id === ('complete-button')) {
         if(!isFormDisplayed) {
             showForm()
             isFormDisplayed = true
         }
-    } else if (e.target && e.target.id === 'pay') {
-        e.preventDefault()
+    } 
+    
+    // Check if pay button is clicked and handle payment processing
+    else if (e.target && e.target.id === 'pay') {
+        e.preventDefault()//Prevent default form submission
         handleClickPayHtml()
     }
 })
 
+// Function handling adding an item to the order
 function handleClickOrderHtml (menuId) {
-    
-
      const targetMenuItem = menuArray.find(menuItem => menuItem.id === parseInt(menuId, 10))
      console.log(targetMenuItem)
 
@@ -61,10 +78,13 @@ function handleClickOrderHtml (menuId) {
 
         orderItems.push({id, price})
 
+        // Calculate the total price of the order
         const totalPrice = orderItems.reduce((total, item) => total + item.price, 0)
 
+        // Display order summary header
         document.getElementById('order').innerHTML = `<h1 class="order"> Your Order </h1>`
 
+        // Add the selected item to the order summary in the DOM
         document.getElementById('order-summary').innerHTML += `
                 <div class="name-price" id="order-item-${id}">
                     <div class="name-remove">
@@ -75,6 +95,7 @@ function handleClickOrderHtml (menuId) {
                 </div>
             </div>`
 
+        // Display the total price
         document.getElementById('total-price').innerHTML = `
             <hr class="hr-bold"/>
             <p class="total">Total Price: <span class="total-price"> $${totalPrice} </span></p>
@@ -85,8 +106,8 @@ function handleClickOrderHtml (menuId) {
      }
 }
 
+// Function to handle removing an item from the order
 function handleRemoverOrderHtml(menuId) {
-
     // Find the index of the item to remove
     const itemIndex = orderItems.findIndex(orderItem => orderItem.id === parseInt(menuId, 10))
 
@@ -110,9 +131,11 @@ function handleRemoverOrderHtml(menuId) {
     }
 }
 
+// Function displaying the payment form
 function showForm () {
     const formContainer = document.getElementById('form-container')
 
+    // Add payment form HTML to the form container
     formContainer.innerHTML = `
         <form class="payment-form">
             <div class="payment-details">
@@ -127,6 +150,7 @@ function showForm () {
         </form>`
 }
 
+// Function to handle payment processing
 function handleClickPayHtml () {
     const form = document.getElementById('form-container')
 
@@ -135,11 +159,13 @@ function handleClickPayHtml () {
     const cardnumber = document.getElementById('cardnumber').value
     const cvv = document.getElementById('cvv').value
 
+     // Validate form fields
     if (!name || !cardnumber || !cvv) {
         alert ('Please fill out all fields.')
         return
     }
 
+    // Create an order object with the payment details
     const order = {
         name: name,
         cardnumber: cardnumber,
@@ -148,6 +174,7 @@ function handleClickPayHtml () {
 
     console.log('Order processed:', order)
 
+    // Show confirmation message
     form.innerHTML = `
             <div class="confirmation-message" >
               <p>Thanks, ${name}! Your order is on the way! </p>
@@ -159,6 +186,7 @@ function handleClickPayHtml () {
 
 }
 
+// Function to render the menu on the page
 function render() {
     document.getElementById('container').innerHTML = getMenuHtml()
 }
